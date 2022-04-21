@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const session = require('express-session')
@@ -9,7 +10,7 @@ const { doesNotMatch } = require('assert')
 const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs')
 
-const mongoDb = "mongodb+srv://dattali:awesome@cluster0.ctloe.mongodb.net/passport?retryWrites=true&w=majority"
+const mongoDb = process.env.MONGO_URL
 mongoose.connect(mongoDb, {useUnifiedTopology: true, useNewUrlParser: true})
 const db = mongoose.connection
 db.on("error", console.error.bind(console, "mongo connection error"))
